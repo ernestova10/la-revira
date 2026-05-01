@@ -7,7 +7,7 @@
 
         <title>Iniciar sesión - Sevilla</title>
         <section class="w-full bg-[#171E38] py-0 leading-[0] overflow-hidden">
-            <img src="{{ asset('img/SanGonzaloLogIn.jpg') }}" 
+            <img src="{{ asset('img/sanGonzaloLogIn.jpg') }}" 
                 alt="San Gonzalo" 
                 class="w-full h-[55vh] object-cover object-[center_30%] opacity-50 block">
         </section>

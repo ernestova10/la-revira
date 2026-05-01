@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="bg-white min-h-screen">
-    {{-- Contenedor alineado arriba --}}
+    
     <div class="flex flex-col items-center">
 
         <title>Registrar - Sevilla</title>
