@@ -17,20 +17,24 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 
+# Instalar Composer dentro del contenedor
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-#  Instalar Node.js y NPM (necesario para Vite)
+# Instalar Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
 
-# . Copiar el código y asegurarse de que el directorio de trabajo es el correcto
+# Establecer directorio y copiar archivos
 WORKDIR /var/www/html
 COPY . .
 
+# Instalar dependencias de PHP 
+RUN composer install --optimize-autoloader --no-dev
 
-# . Instalar dependencias de JS y compilar los assets
+# Instalar dependencias de JS y compilar los assets
 RUN npm install && npm run build
 
-# . (Opcional) Ajustes de permisos
+# Permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 
