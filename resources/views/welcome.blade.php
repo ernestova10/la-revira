@@ -88,7 +88,7 @@
 
     <section class="w-full bg-custom-blue py-6 md:py-8">
         <div class="container mx-auto px-4 flex justify-center">
-            <img src="{{ asset('img/cartelSS26.jpeg') }}" 
+            <img src="{{ asset('img/cartel_horizontal.png') }}" 
                 alt="Cartel Semana Santa 2026 - El Cachorro" 
                 class="w-auto h-auto max-h-[55vh] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] rounded-sm transform transition-all duration-500 hover:scale-[1.01]">
         </div>

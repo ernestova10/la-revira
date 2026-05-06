@@ -138,7 +138,7 @@
 
         <div class="mb-20">
             <h2 class="bg-custom-blue text-white block px-8 py-3 text-xl font-bold uppercase tracking-widest mb-5 -mr-[3%] pr-[3%] -ml-[3%] w-full md:w-auto">
-                Carrea Oficial
+                Carrera Oficial
             </h2>
             <div class="flex flex-col md:flex-row-reverse items-center gap-12">
                 <p class="text-gray-700 leading-relaxed text-lg flex-1">

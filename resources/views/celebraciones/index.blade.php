@@ -107,7 +107,7 @@
                 <h2 class="text-2xl font-bold text-gray-800">Apertura de la Catedral de Sevilla</h2>
             </div>
             <p class="text-gray-700 leading-relaxed text-lg pl-6">
-                La Catedral de Sevilla adquiere un papel central durante estos días. Permanece abierta para la celebración de actos litúrgicos, la entrada de las hermandades durante la estación de penitencia y la visita de fieles y visitantes.
+                La Catedral de Sevilla adquiere un papel central durante estos días. Permanece abierta para la celebración de actos litúrgicos, la entrada de las hermandades durante la estación de penitencia y la visita de fieles y turistas.
             </p>
         </div>
 
