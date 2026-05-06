@@ -12,8 +12,12 @@ class TicketController extends Controller
     
     public function index()
     {
+        dd('Llegó al controlador de tickets'); 
+        
         $ticketTypes = TicketType::all();
         return view('tickets.index', compact('ticketTypes'));
+        //$ticketTypes = TicketType::all();
+        //return view('tickets.index', compact('ticketTypes'));
     }
 
     
