@@ -87,7 +87,7 @@
             <a href="#pasos" class="hover:text-gray-300">Pasos</a>
             <a href="#musica" class="hover:text-gray-300">A. Musical</a> 
             <a href="#recorrido" class="hover:text-gray-300">Recorrido Oficial</a> 
-            <a href="#" class="hover:text-gray-300">Papeletas de sitio</a> 
+            <a href="/papeletas" class="hover:text-gray-300">Papeletas de sitio</a> 
         </div> 
     </nav>
 

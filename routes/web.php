@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InstagramController;
+use App\Http\Controllers\TicketController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,17 +39,22 @@ Route::middleware(['auth'])->group(function () {
     })->name('vidaCofrade');
 });
 
-use App\Http\Controllers\InstagramController;
 
-// 1. Ruta pública para ver la Vida Cofrade (solo usuarios logueados)
+// Ruta pública para ver la Vida Cofrade (solo usuarios logueados)
 Route::middleware(['auth'])->group(function () {
     Route::get('/vida-cofrade', [InstagramController::class, 'index'])->name('vidaCofrade');
 });
 
-// 2. Rutas de ADMINISTRADOR (solo tú)
+// Rutas de ADMINISTRADOR
 Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::post('/vida-cofrade/store', [InstagramController::class, 'store'])->name('admin.instagram.store');
     Route::delete('/vida-cofrade/{id}', [InstagramController::class, 'destroy'])->name('admin.instagram.destroy');
 });
+
+// Mostrar la vista de las papeletas
+Route::get('/papeletas', [TicketController::class, 'index'])->name('tickets.index')->middleware('auth');
+
+// Procesar la compra
+Route::post('/papeletas/comprar/{id}', [TicketController::class, 'buy'])->name('tickets.buy')->middleware('auth');
 
 require __DIR__.'/auth.php';
