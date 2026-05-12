@@ -54,4 +54,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
 Route::get('/papeletas/{hermandad}', [TicketController::class, 'index'])->name('tickets.index');
 
+// Esta es la ruta para procesar la compra
+Route::post('/papeletas/comprar/{id}', [TicketController::class, 'buy'])->name('tickets.buy');
+
 require __DIR__.'/auth.php';
