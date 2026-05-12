@@ -2,7 +2,7 @@
     <div class="py-12 bg-white">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             
-            {{-- Mensajes de Feedback superiores --}}
+            
             @if (session('success'))
                 <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded shadow-sm font-semibold">
                     {{ session('success') }}
@@ -19,7 +19,7 @@
                 <img src="/path-a-tu-imagen-de-la-giralda.jpg" alt="La Revirá" class="w-full object-cover h-64">
             </div>
 
-            <form action="{{ route('tickets.buy', 1) }}" method="POST" id="form-papeleta" class="bg-gray-200 rounded-xl p-8 shadow-md text-gray-800 font-sans">
+            <form action="{{ route('tickets.buy', $ticketTypes->first()->id ?? 1) }}" method="POST" id="form-papeleta" class="bg-gray-200 rounded-xl p-8 shadow-md text-gray-800 font-sans">
                 @csrf
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center font-bold text-sm text-gray-700 tracking-wider">
@@ -30,7 +30,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     
-                    {{-- Bloque 1: Datos Personales --}}
+                   
                     <div class="space-y-4">
                         <div>
                             <label class="block text-xs font-bold mb-1 text-gray-700 uppercase">Nombre y Apellidos</label>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
 
-                    {{-- Bloque 2: Selecciona Hermandad (Datos fijos de la consulta) --}}
+                    
                     <div class="space-y-4">
                         <div>
                             <span class="block text-xs font-bold mb-1 text-gray-700 uppercase">Hermandad</span>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    {{-- Bloque 3: Selecciona Papeleta (Aquí inyectamos dinámicamente tus datos) --}}
+                    
                     <div class="space-y-4 flex flex-col justify-between">
                         <div>
                             <label class="block text-xs font-bold mb-1 text-gray-700 uppercase">Tipo de Papeleta</label>
@@ -84,7 +84,7 @@
                             </select>
                         </div>
 
-                        {{-- Cuadro dinámico que muestra los detalles del ticket seleccionado --}}
+                        
                         <div class="bg-white p-4 rounded shadow-sm text-center space-y-3 min-h-[120px] flex flex-col justify-center">
                             <p id="papeleta-nombre" class="font-bold text-gray-800 text-sm">Cargando...</p>
                             <p class="text-xs text-gray-600">Precio: <span id="papeleta-precio" class="font-bold text-indigo-900">0.00 €</span></p>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
 
-                {{-- Botón inferior de Confirmación --}}
+                
                 <div class="mt-8 text-center">
                     <button type="submit" id="btn-submit" class="bg-[#1a233a] hover:bg-indigo-950 text-white font-bold py-3 px-8 rounded tracking-widest text-xs uppercase shadow transition duration-200">
                         CONFIRMAR INSCRIPCIÓN Y PAGAR
@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    {{-- Script para cambiar el precio y la acción del formulario según el desplegable --}}
+    
     <script>
         function actualizarInfoPapeleta() {
             const select = document.getElementById('ticket_type_id');
@@ -141,8 +141,10 @@
             const btnSubmit = document.getElementById('btn-submit');
             const form = document.getElementById('form-papeleta');
 
-            // Cambiamos la ruta del formulario dinámicamente para que apunte al ID correcto
-            form.action = "{{ route('tickets.buy', '') }}/" + id;
+            let urlBase = "{{ route('tickets.buy', 'ID_TEMPORAL') }}";
+
+            
+            form.action = urlBase.replace('ID_TEMPORAL', id);
 
             if (stock > 0) {
                 stockLabel.innerText = "Quedan " + stock + " unidades disponibles";
