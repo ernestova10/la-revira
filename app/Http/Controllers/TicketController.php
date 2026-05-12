@@ -25,33 +25,36 @@ class TicketController extends Controller
     
     public function buy(Request $request, $id)
     {
+        // 1. Verificar si el usuario ya tiene una papeleta comprada
         $yaTienePapeleta = Purchase::where('user_id', auth()->id())->exists();
+
         if ($yaTienePapeleta) {
-            return back()->with('error', 'Ya tienes una papeleta reservada.');
+            return redirect()->back()->with('error', 'Lo sentimos, este usuario ya tiene registrada una papeleta de sitio y no puede adquirir otra.');
         }
-        
+
+        // 2. Buscar el tipo de papeleta que quiere comprar
         $ticketType = TicketType::findOrFail($id);
 
-        // Validamos si hay stock disponible
+        // Validar que haya stock suficiente
         if ($ticketType->stock <= 0) {
-            return back()->with('error', 'Lo sentimos, ya no quedan papeletas de este tipo.');
+            return redirect()->back()->with('error', 'Lo sentimos, ya no quedan existencias para este tipo de papeleta.');
         }
 
-        // Usamos una transacción para asegurar la integridad de los datos
-        DB::transaction(function () use ($ticketType) {
-            // 1. Restamos del stock y sumamos al stock reservado
-            $ticketType->decrement('stock');
-            $ticketType->increment('reserved_stock');
+        // 3. Restar stock del inventario
+        $ticketType->decrement('stock');
 
-            // 2. Registramos la compra en estado 'pending'
-            Purchase::create([
-                'user_id' => auth()->id(),
-                'ticket_type_id' => $ticketType->id,
-                'amount' => $ticketType->price,
-                'status' => 'pending', 
-            ]);
-        });
+        // 4. Registrar la compra en la Base de Datos con todos los datos del hermano
+        $purchase = Purchase::create([
+            'user_id'          => auth()->id(),
+            'ticket_type_id'   => $ticketType->id,
+            'amount'           => $ticketType->price,
+            'status'           => 'completed', 
+            'nombre_hermano'   => $request->input('nombre'),   
+            'dni_hermano'      => $request->input('dni'),      
+            'telefono_hermano' => $request->input('telefono'),
+        ]);
 
-        return back()->with('success', 'Papeleta seleccionada. Redirigiendo a la pasarela de pago...');
+        // 5. Redirigir a una pantalla de Recibo o Resumen pasando los datos de la compra
+        return view('tickets.compra', compact('purchase', 'ticketType'));
     }
 }
