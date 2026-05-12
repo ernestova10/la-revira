@@ -14,21 +14,21 @@ class TicketTypeSeeder extends Seeder
 
         foreach ($hermandades as $hermandad) {
             
-            TicketType::create([
+            \App\Models\TicketType::create([
                 'hermandad_id' => $hermandad->id,
                 'name' => 'Costalero',
                 'price' => 15.00,
                 'stock' => 60,
             ]);
 
-            TicketType::create([
+            \App\Models\TicketType::create([
                 'hermandad_id' => $hermandad->id,
                 'name' => 'Nazareno',
                 'price' => 20.00,
                 'stock' => 100,
             ]);
 
-            TicketType::create([
+            \App\Models\TicketType::create([
                 'hermandad_id' => $hermandad->id,
                 'name' => 'Acolito',
                 'price' => 20.00,
