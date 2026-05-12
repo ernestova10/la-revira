@@ -72,9 +72,9 @@
 
     <nav class="bg-[#171E38] text-white py-3 sticky top-0 z-50"> 
         <div class="container mx-auto px-6 flex justify-center space-x-8 text-sm font-bold uppercase tracking-widest"> 
-            <a href="/hermandades/{{ $hermandad->id }}#historia" class="hover:text-gray-300">Historia</a> 
-            <a href="/hermandades/{{ $hermandad->id }}#pasos" class="hover:text-gray-300">Pasos</a>
-            <a href="/hermandades/{{ $hermandad->id }}#musica" class="hover:text-gray-300">A. Musical</a> 
+            <a href="/hermandades/{{ $hermandad->slug }}#historia" class="hover:text-gray-300">Historia</a> 
+            <a href="/hermandades/{{ $hermandad->slug }}#pasos" class="hover:text-gray-300">Pasos</a>
+            <a href="/hermandades/{{ $hermandad->slug }}#musica" class="hover:text-gray-300">A. Musical</a> 
             <a href="#" class="text-yellow-500">Papeletas de Sitio</a> 
         </div> 
     </nav>
@@ -95,7 +95,7 @@
         @endif
 
         <div class="mb-8 rounded-2xl overflow-hidden shadow-xl max-h-80">
-            <img src="{{ asset($hermandad->imagen_cristo ?? 'img/Logo.jpg') }}" alt="La Revirá Cofradías" class="w-full object-cover h-80">
+            <img src="{{ asset('img/papeletasSitio.jpeg') }}" alt="La Revirá Cofradías" class="w-full object-cover h-80">
         </div>
 
         <div class="bg-[#EAEAEA] rounded-2xl p-8 md:p-12 shadow-lg max-w-4xl mx-auto">
