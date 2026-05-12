@@ -51,10 +51,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::delete('/vida-cofrade/{id}', [InstagramController::class, 'destroy'])->name('admin.instagram.destroy');
 });
 
-// Mostrar la vista de las papeletas
-Route::get('/papeletas', [TicketController::class, 'index'])->name('tickets.index')->middleware('auth');
 
-// Procesar la compra
-Route::post('/papeletas/comprar/{id}', [TicketController::class, 'buy'])->name('tickets.buy')->middleware('auth');
+Route::get('/papeletas/{hermandad}', [TicketController::class, 'index'])->name('tickets.index');
 
 require __DIR__.'/auth.php';

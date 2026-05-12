@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('ticket_types', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('hermandad_id')->constrained('hermandades')->onDelete('cascade');
             $table->string('name'); // Ejemplo: Costalero, Acólito, Nazareno
             $table->decimal('price', 8, 2); // Ejemplo: 25.00
             $table->integer('stock'); // Cantidad disponible

@@ -86,8 +86,9 @@
             <a href="#historia" class="hover:text-gray-300">Historia</a> 
             <a href="#pasos" class="hover:text-gray-300">Pasos</a>
             <a href="#musica" class="hover:text-gray-300">A. Musical</a> 
-            <a href="#recorrido" class="hover:text-gray-300">Recorrido Oficial</a> 
-            <a href="/papeletas" class="hover:text-gray-300">Papeletas de sitio</a> 
+            <a href="{{ route('tickets.index', $hermandad->id) }}" class="btn btn-primary">
+                Papeletas de Sitio
+            </a> 
         </div> 
     </nav>
 

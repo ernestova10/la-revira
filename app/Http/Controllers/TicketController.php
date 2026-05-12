@@ -10,14 +10,16 @@ use Illuminate\Support\Facades\DB;
 class TicketController extends Controller
 {
     
-    public function index()
+    public function index($hermandad_id)
     {
-        dd('Llegó al controlador de tickets'); 
+    
+        $hermandad = \App\Models\Hermandad::findOrFail($hermandad_id);
+
         
-        $ticketTypes = TicketType::all();
-        return view('tickets.index', compact('ticketTypes'));
-        //$ticketTypes = TicketType::all();
-        //return view('tickets.index', compact('ticketTypes'));
+        $ticketTypes = \App\Models\TicketType::where('hermandad_id', $hermandad_id)->get();
+
+        
+        return view('tickets.index', compact('ticketTypes', 'hermandad'));
     }
 
     
