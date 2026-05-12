@@ -13,6 +13,9 @@ class Purchase extends Model
         'user_id',
         'ticket_type_id',
         'amount',
-        'status'
+        'status',
+        'nombre_hermano',
+        'dni_hermano',      
+        'telefono_hermano'
     ];
 }

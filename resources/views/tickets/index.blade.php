@@ -80,8 +80,14 @@
     </nav>
 
     <main class="container mx-auto px-4 py-12 max-w-5xl">
+        @if(session('error'))
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded shadow-sm" role="alert">
+                <p class="font-bold">Error</p>
+                <p>{{ session('error') }}</p>
+            </div>
+        @endif
         
-        {{-- Mensajes de Notificación superiores --}}
+        
         @if (session('success'))
             <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg shadow-sm font-semibold text-center">
                 {{ session('success') }}

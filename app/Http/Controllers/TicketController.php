@@ -25,6 +25,11 @@ class TicketController extends Controller
     
     public function buy(Request $request, $id)
     {
+        $yaTienePapeleta = Purchase::where('user_id', auth()->id())->exists();
+        if ($yaTienePapeleta) {
+            return back()->with('error', 'Ya tienes una papeleta reservada.');
+        }
+        
         $ticketType = TicketType::findOrFail($id);
 
         // Validamos si hay stock disponible
