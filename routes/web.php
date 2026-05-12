@@ -52,9 +52,14 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 });
 
 
-Route::get('/papeletas/{hermandad}', [TicketController::class, 'index'])->name('tickets.index');
+Route::middleware(['auth'])->group(function () {
+    
+    // Ruta para ver el formulario de las papeletas
+    Route::get('/hermandades/{id}/tickets', [TicketController::class, 'index'])->name('tickets.index');
+    
+    // Ruta POST para procesar el pago de la papeleta
+    Route::post('/papeletas/comprar/{id}', [TicketController::class, 'buy'])->name('tickets.buy');
 
-// Esta es la ruta para procesar la compra
-Route::post('/papeletas/comprar/{id}', [TicketController::class, 'buy'])->name('tickets.buy');
+});
 
 require __DIR__.'/auth.php';
