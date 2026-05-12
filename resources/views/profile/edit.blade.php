@@ -11,7 +11,7 @@
             </h2>
             <p class="text-gray-500 mt-4 font-medium uppercase text-xs tracking-widest">Gestiona tus datos personales y seguridad</p><br>
             <a href="{{ route('profile.purchases') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                Mis Papeletas
+                Mi Papeleta
             </a>
             <div class="mb-4">
                 <a href="{{ route('welcome') }}" class="inline-flex items-center gap-2 text-[#171E38] hover:text-gray-600 transition-all font-bold uppercase text-xs tracking-widest group">

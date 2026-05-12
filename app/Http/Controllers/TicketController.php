@@ -70,11 +70,11 @@ class TicketController extends Controller
                             ->first(); 
 
         if (!$purchase) {
-            return view('tickets.resumen', ['purchase' => null, 'ticketType' => null]);
+            return view('tickets.compra', ['purchase' => null, 'ticketType' => null]);
         }
 
         $ticketType = $purchase->ticketType;
 
-        return view('tickets.resumen', compact('purchase', 'ticketType'));
+        return view('tickets.compra', compact('purchase', 'ticketType'));
     }
 }
