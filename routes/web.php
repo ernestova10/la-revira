@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
     // Ruta POST para procesar el pago de la papeleta
     Route::post('/papeletas/comprar/{id}', [TicketController::class, 'buy'])->name('tickets.buy');
 
+    Route::get('/perfil/mis-compras', [TicketController::class, 'myPurchases'])->name('profile.purchases');
+
 });
 
 require __DIR__.'/auth.php';

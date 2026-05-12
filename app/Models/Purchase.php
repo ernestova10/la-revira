@@ -18,4 +18,9 @@ class Purchase extends Model
         'dni_hermano',      
         'telefono_hermano'
     ];
+
+    public function ticketType()
+    {
+        return $this->belongsTo(TicketType::class, 'ticket_type_id');
+    }
 }

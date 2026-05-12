@@ -16,3 +16,4 @@ class TicketType extends Model
         'reserved_stock',
     ];
 }
+

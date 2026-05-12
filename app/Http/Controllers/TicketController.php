@@ -7,6 +7,7 @@ use App\Models\TicketType;
 use App\Models\Purchase;
 use Illuminate\Support\Facades\DB;
 
+
 class TicketController extends Controller
 {
     
@@ -56,5 +57,24 @@ class TicketController extends Controller
 
         // 5. Redirigir a una pantalla de Recibo o Resumen pasando los datos de la compra
         return view('tickets.compra', compact('purchase', 'ticketType'));
+    }
+
+
+
+
+    public function myPurchases()
+    {
+        
+        $purchase = Purchase::where('user_id', auth()->id())
+                            ->latest()
+                            ->first(); 
+
+        if (!$purchase) {
+            return view('tickets.resumen', ['purchase' => null, 'ticketType' => null]);
+        }
+
+        $ticketType = $purchase->ticketType;
+
+        return view('tickets.resumen', compact('purchase', 'ticketType'));
     }
 }
