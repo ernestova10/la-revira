@@ -80,12 +80,7 @@
     </nav>
 
     <main class="container mx-auto px-4 py-12 max-w-5xl">
-        @if(session('error'))
-            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded shadow-sm" role="alert">
-                <p class="font-bold">Error</p>
-                <p>{{ session('error') }}</p>
-            </div>
-        @endif
+        
         
         
         @if (session('success'))
