@@ -18,7 +18,7 @@ class TicketController extends Controller
         
         $ticketTypes = \App\Models\TicketType::where('hermandad_id', $hermandad_id)->get();
 
-        
+        dd($ticketTypes);
         return view('tickets.index', compact('ticketTypes', 'hermandad'));
     }
 
