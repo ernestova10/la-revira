@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Servidor Web (Tu aplicación Laravel)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:10000" # Mapea el puerto 10000 del contenedor al 8000 de la máquina local
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=laravel_db
+      - DB_USERNAME=laravel_user
+      - DB_PASSWORD=laravel_password
+      - APP_ENV=local
+      - APP_KEY=base64:7S7Z4bW6hGvR8uN3xPzA9qK1mY2t5vB8eEw3zQ4rX1M=
+    depends_on:
+      - db
+
+  # Base de Datos (MySQL)
+  db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel_db
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: laravel_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
