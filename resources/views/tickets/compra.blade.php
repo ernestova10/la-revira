@@ -23,7 +23,7 @@
             <p class="text-sm text-gray-500">La Revirá - Semana Santa de Sevilla</p>
         </div>
 
-        {{-- Este aviso de éxito SOLO saldrá si acaba de realizar la compra ahora mismo --}}
+        
         @if(session('success') || request()->is('papeletas/comprar/*'))
             <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded-r">
                 <p class="text-green-700 font-medium text-sm">¡Inscripción confirmada y pago simulado con éxito!</p>
