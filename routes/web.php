@@ -10,7 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/que-ocure', function () {
+Route::get('/que-ocurre', function () {
     return view('queOcurreSS.index'); 
 });
 
