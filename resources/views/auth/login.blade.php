@@ -34,14 +34,6 @@
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
-                <div class="flex justify-between items-center text-[11px] font-bold uppercase tracking-widest text-gray-500 px-1">
-                    <label class="flex items-center cursor-pointer">
-                        <input type="checkbox" name="remember" class="rounded border-gray-300 text-[#171E38] focus:ring-[#171E38] mr-2">
-                        Recuerdame
-                    </label>
-                    <a href="{{ route('password.request') }}" class="hover:text-[#171E38]">¿Olvidaste tu contraseña?</a>
-                </div>
-
                 <div class="flex justify-center mt-10">
                     <button type="submit" class="bg-[#171E38] text-white px-16 py-3 font-bold uppercase tracking-[0.2em] hover:bg-slate-800 transition-all shadow-lg">
                         Iniciar sesión
